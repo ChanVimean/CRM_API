@@ -4,6 +4,8 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module.js';
+import { ChatModule } from './chat/chat.module.js';
+import { ChatGateway } from './chat/chat.gateway.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -19,8 +21,9 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     }),
     ConfigModule.forRoot(),
     AuthModule,
+    ChatModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ChatGateway],
 })
 export class AppModule {}
